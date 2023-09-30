@@ -2,18 +2,18 @@ package router
 
 import "github.com/gin-gonic/gin"
 
+// Initialize gin router and routes for the application
 func Initialize() {
-	// Inicializa o router com as configurações padrões do gin
+	// Initialize the router
 	router := gin.Default()
-	// Define a rota e a função que será executada quando a rota for acessada, essa funcao e chamada de handler e recebe um parametro do tipo gin.Context que contem todas as informações da requisição
-	router.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	// Inicia o servidor na porta 8080, listen and serve on
+
+	// Initialize the routes
+	initializeRoutes(router)
+
+	// Run the server on port 8080
 	err := router.Run(":8080")
 	if err != nil {
+		println(err)
 		return
 	}
 }
